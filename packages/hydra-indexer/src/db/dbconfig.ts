@@ -9,6 +9,13 @@ const migrationsDir = path.resolve(__dirname, '../migrations')
 
 const config: (name?: string) => ConnectionOptions = (name) => {
   const conf = getDBConfig()
+  const migrations = [`${migrationsDir}/v3/*.js`, `${migrationsDir}/v4/*.js`]
+  if (conf.EXTENSION_MIGRATIONS_DIR) {
+    const pattern = conf.EXTENSION_MIGRATIONS_DIR.endsWith('/')
+      ? `${conf.EXTENSION_MIGRATIONS_DIR}*.js`
+      : `${conf.EXTENSION_MIGRATIONS_DIR}/*.js`
+    migrations.push(pattern)
+  }
   return {
     name,
     type: 'postgres',
@@ -22,7 +29,7 @@ const config: (name?: string) => ConnectionOptions = (name) => {
       SubstrateExtrinsicEntity,
       SubstrateBlockEntity,
     ],
-    migrations: [`${migrationsDir}/v3/*.js`, `${migrationsDir}/v4/*.js`],
+    migrations,
     cli: {
       migrationsDir: 'src/migrations/v3',
     },

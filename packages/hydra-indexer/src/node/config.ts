@@ -23,6 +23,7 @@ let conf: {
   DB_USER: string
   DB_PASS: string
   DB_LOGGING: string
+  EXTENSION_MIGRATIONS_DIR: string
   // advanced consts
   BLOCK_CACHE_TTL_SEC: number
   INDEXER_HEAD_TTL_SEC: number
@@ -43,6 +44,7 @@ let dbConf: {
   DB_USER: string
   DB_PASS: string
   DB_LOGGING: string
+  EXTENSION_MIGRATIONS_DIR: string
 }
 
 const jsonPath = makeValidator<Record<string, unknown>>(
@@ -106,6 +108,10 @@ export function dbConfigure(): void {
       ],
       default: 'error',
       desc: 'Typeorm logging level',
+    }),
+    EXTENSION_MIGRATIONS_DIR: str({
+      default: undefined,
+      desc: "Path to directory with an extension's compiled migrations",
     }),
   })
 }
