@@ -7,7 +7,7 @@ import {
 } from '../model'
 import _ from 'lodash'
 
-import { toPayload } from '@subsquid/hydra-common'
+import { BlockPayload } from '@subsquid/hydra-common'
 
 import Debug from 'debug'
 import { PooledExecutor } from './PooledExecutor'
@@ -168,6 +168,17 @@ export class IndexBuilder {
       }
     })
 
-    eventEmitter.emit(IndexerEvents.BLOCK_COMPLETED, toPayload(blockEntity))
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const spec = (blockEntity.runtimeVersion as any)?.specVersion
+    const blockPayload: BlockPayload = {
+      height: blockEntity.height,
+      hash: blockEntity.hash,
+      parentHash: blockEntity.parentHash,
+      ts: blockEntity.timestamp,
+      events: blockEntity.events,
+      extrinsics: blockEntity.extrinsics,
+      runtimeVersion: spec ? { specVersion: String(spec) } : {},
+    }
+    eventEmitter.emit(IndexerEvents.BLOCK_COMPLETED, blockPayload)
   }
 }

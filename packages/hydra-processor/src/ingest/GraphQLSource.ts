@@ -150,7 +150,12 @@ export class GraphQLSource implements IProcessorSource {
         timestamp
         runtimeVersion
         lastRuntimeUpgrade
-        events
+        events: substrate_events {
+          id
+          name
+          extrinsicId
+          extrinsicName
+        }
         extrinsics
     }}`)
 
