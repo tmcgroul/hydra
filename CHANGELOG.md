@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 5.0.0-alpha.27 (2022-02-16)
+
+
+### Bug Fixes
+
+* **hydra-indexer:** livness probe after test ([#173](https://github.com/subsquid/hydra/issues/173)) ([e441000](https://github.com/subsquid/hydra/commit/e4410003f363cdcfd6a398accfe04c05771e522d))
+
+
+
 ## 5.0.0-alpha.26 (2022-02-16)
 
 **Note:** Version bump only for package hydra
