@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 5.0.0-alpha.28 (2022-02-19)
+
+
+### Bug Fixes
+
+* @polkadot/api version ([#175](https://github.com/Joystream/hydra/issues/175)) ([cfa8101](https://github.com/Joystream/hydra/commit/cfa8101dfb3caa74a9d75cb89e943a540f62d479))
+
+
+
 ## 5.0.0-alpha.27 (2022-02-16)
 
 
