@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 5.0.0-alpha.29 (2022-02-23)
+
+
+### Bug Fixes
+
+* **hydra-indexer:** bump polkadot.js to 7.9.1 ([#178](https://github.com/subsquid/hydra/issues/178)) ([bb2f1d7](https://github.com/subsquid/hydra/commit/bb2f1d70696b281fe35e0b001ea420b6badadade))
+
+
+
 ## 5.0.0-alpha.28 (2022-02-19)
 
 
