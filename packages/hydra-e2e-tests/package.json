@@ -9,7 +9,7 @@
     "test": "nyc --extension .ts mocha --timeout 70000 --require ts-node/register --exit \"test/*.test.ts\""
   },
   "dependencies": {
-    "@polkadot/api": "^6.4.2",
+    "@polkadot/api": "^7.9.1",
     "expect": "^27.3.1",
     "graphql": "^15.6.1",
     "graphql-ws": "^5.5.0",

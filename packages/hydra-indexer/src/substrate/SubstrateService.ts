@@ -10,6 +10,8 @@ import {
   LastRuntimeUpgradeInfo,
 } from '@polkadot/types/interfaces'
 import { Codec } from '@polkadot/types/types'
+import { u64 } from '@polkadot/types/primitive'
+import { Option } from '@polkadot/types'
 import { ApiPromise } from '@polkadot/api'
 import pForever from 'p-forever'
 import delay from 'delay'
@@ -128,7 +130,7 @@ export class SubstrateService implements ISubstrateService {
 
     try {
       const apiAt = await this.apiAt(hash)
-      const result = await apiAt.query.system.events()
+      const result = await apiAt.query.system.events<EventRecord[] & Codec>()
       end({ status: '200' })
       return result
     } catch (e) {
@@ -220,7 +222,7 @@ export class SubstrateService implements ISubstrateService {
 
     const end = this.timingHist.startTimer({ method: 'timestamp' })
     try {
-      const result = await apiAt.query.timestamp.now()
+      const result = await apiAt.query.timestamp.now<u64>()
       end({ status: '200' })
       return result
     } catch (e) {
@@ -244,7 +246,9 @@ export class SubstrateService implements ISubstrateService {
 
     const end = this.timingHist.startTimer({ method: 'last_runtime_upgrade' })
     try {
-      const info = await apiAt.query.system.lastRuntimeUpgrade?.()
+      const info = await apiAt.query.system.lastRuntimeUpgrade?.<
+        Option<LastRuntimeUpgradeInfo>
+      >()
       end({ status: '200' })
       return info?.unwrapOr(undefined)
     } catch (e) {
